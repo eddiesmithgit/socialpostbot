@@ -1,0 +1,48 @@
+user puts zip file in main directory(md)
+runs the program
+
+Program stuff
+extracts zip ✅
+create directory mn ✅
+create directory temp ✅
+cd to extracted folder(ezip) ✅
+move files with name starting with  "0am_" to  mn ✅
+open chrome ✅
+go to meta business suite (mbs) create post url ✅
+
+loop until files are over ✅
+{
+    if(any file exst in mn){ ✅
+move 1 file from mn to temp} ✅
+if(no: of files greater than 4) ✅
+{
+select 4 files from ezip move to temp ✅
+}
+else
+{
+    move remaining files to temp ✅
+}
+
+upload all files from temp to mbs ✅
+paste in caption with getting date and pack no from txt
+    if(date<current date){
+        put current date on mbs
+        put pack no as 1 on mbs
+        update date to current date in txt and pack no = 2
+    }
+    else
+    {
+        put date on mbs date from txt (dft)
+        put pack no as pack no from txt (pft)
+        update pack no ++
+        if(pft > 2)
+         {
+            pft=1
+            dft = dft + add one day
+         }
+    }
+    clear temp
+}
+clear md
+
+

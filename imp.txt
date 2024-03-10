@@ -1,0 +1,1 @@
+--remote-debugging-port=9222 --user-data-dir=/Users/eddiesmith/Desktop/profile/auto_eddie
