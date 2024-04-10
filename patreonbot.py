@@ -61,6 +61,7 @@ if zip_files:
     
     filenumber= 3  
     start_date = utilfns.getdatefrusr()
+    prelease_date = start_date + datetime.timedelta(days=1)
 
     while extraction_images:
         pscount=  0 if content_type==0 else 1 
@@ -86,7 +87,7 @@ if zip_files:
         pyautogui.write(titletxt[content_type])
         time.sleep(1)
         titleedit.click()
-        txtedit=browser.find_element(By.XPATH,"/html/body/div/div/div[4]/div/main/div[1]/div/div/div/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div").click()
+        txtedit=browser.find_element(By.XPATH,"/html/body/div/div/div[4]/div/main/div[1]/div/div/div/div/div/div[2]/div/div[3]/div/p").click()
         utilfns.write_to_clipboard(utilfns.get_captions())
         shts.paste()
         time.sleep(2)
@@ -120,28 +121,88 @@ if zip_files:
         time.sleep(1)
         pyautogui.press('space')
         time.sleep(1)
-        #Schedule post
-        pyautogui.click(x=1121, y=471) #- tg button
-        time.sleep(3)
-        #date
-        day = start_date.strftime("%d")
-        month = start_date.strftime("%m")
-        year = start_date.strftime("%Y")
-        pyautogui.click(x=563, y=522) #- day
-        pyautogui.write(day)
-        pyautogui.click(x=590, y=522) #- month
-        pyautogui.write(month)
-        pyautogui.click(x=622, y=522) #- year
-        pyautogui.write(year)
-        time.sleep(2)
 
-        #time
-        pyautogui.click(x=842, y=522) #- hour
-        pyautogui.write(timearr[pscount][0])
-        pyautogui.click(x=862, y=522) #- mins
-        pyautogui.write(timearr[pscount][1])
-        pyautogui.click(x=890, y=522) #- AM/PM
-        pyautogui.write(timearr[pscount][2])
+        if(content_type==0):
+            # SFW Content
+
+            #early access
+            pyautogui.click(x=1127, y=370) #- tg button
+            time.sleep(3)
+
+            #date
+            day = prelease_date.strftime("%d")
+            month = prelease_date.strftime("%m")
+            year = prelease_date.strftime("%Y")
+            pyautogui.click(x=563, y=450) #- day
+            pyautogui.write(day)
+            pyautogui.click(x=590, y=450) #- month
+            pyautogui.write(month)
+            pyautogui.click(x=622, y=450) #- year
+            pyautogui.write(year)
+            time.sleep(2)
+
+            #time
+            pyautogui.click(x=842, y=450) #- hour
+            pyautogui.write(timearr[pscount][0])
+            pyautogui.click(x=862, y=450) #- mins
+            pyautogui.write(timearr[pscount][1])
+            pyautogui.click(x=890, y=450) #- AM/PM
+            pyautogui.write(timearr[pscount][2])
+
+
+
+
+            #Schedule post
+            pyautogui.click(x=1121, y=550) #- tg button
+            time.sleep(3)
+
+            #date
+            day = start_date.strftime("%d")
+            month = start_date.strftime("%m")
+            year = start_date.strftime("%Y")
+            pyautogui.click(x=563, y=605) #- day
+            pyautogui.write(day)
+            pyautogui.click(x=590, y=605) #- month
+            pyautogui.write(month)
+            pyautogui.click(x=622, y=605) #- year
+            pyautogui.write(year)
+            time.sleep(2)
+
+            #time
+            pyautogui.click(x=842, y=605) #- hour
+            pyautogui.write(timearr[pscount][0])
+            pyautogui.click(x=862, y=605) #- mins
+            pyautogui.write(timearr[pscount][1])
+            pyautogui.click(x=890, y=605) #- AM/PM
+            pyautogui.write(timearr[pscount][2])
+        
+        elif(content_type==1):
+            #NSFW Content
+
+            #Schedule post
+            pyautogui.click(x=1121, y=475) #- tg button
+            time.sleep(3)
+
+            #date
+            day = start_date.strftime("%d")
+            month = start_date.strftime("%m")
+            year = start_date.strftime("%Y")
+            pyautogui.click(x=563, y=530) #- day
+            pyautogui.write(day)
+            pyautogui.click(x=590, y=530) #- month
+            pyautogui.write(month)
+            pyautogui.click(x=622, y=530) #- year
+            pyautogui.write(year)
+            time.sleep(2)
+
+            #time
+            pyautogui.click(x=842, y=530) #- hour
+            pyautogui.write(timearr[pscount][0])
+            pyautogui.click(x=862, y=530) #- mins
+            pyautogui.write(timearr[pscount][1])
+            pyautogui.click(x=890, y=530) #- AM/PM
+            pyautogui.write(timearr[pscount][2])
+
         
         time.sleep(5)
         schedulebtn= browser.find_element(By.XPATH,"/html/body/div/div/div[4]/div/main/div[1]/div/div/div/div/nav/div[1]/div[2]/div[2]/button")
@@ -162,6 +223,7 @@ if zip_files:
         time.sleep(5)
             
         start_date += datetime.timedelta(days=1)
+        prelease_date = start_date + datetime.timedelta(days=1)
         extraction_images = [file for file in os.listdir(extraction_path) if file.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
     else:
         print("No images found in the extraction or featured folders.")

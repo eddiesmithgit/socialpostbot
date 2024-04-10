@@ -20,11 +20,10 @@ def get_hashtags(lenth=28):
                 raise ValueError("The file should contain at least 30 words.")
 
             # Randomly select 30 words
-            random_words = random.sample(words, lenth-5)
+            random_words = random.sample(words, lenth)
 
             # Join the selected words into a string
             result_string = ' '.join(random_words)
-            result_string += ' '+'#patreon'+' '+'#patreonmodel'+' '+'#eddieartsai'
 
             return result_string
     except FileNotFoundError:

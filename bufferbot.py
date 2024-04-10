@@ -122,11 +122,12 @@ if zip_files:
             pyautogui.press('enter')
             time.sleep(1)
             #hashtags
-            pyautogui.write(utilfns.get_hashtags())
+            pyautogui.write('#model '+utilfns.get_hashtags(3)+' #eddieartsai')
+            # pyautogui.write('#model #eddieartsai #fashion #hollywood #candidphotography')
             time.sleep(2)
            
             #add queue
-            browser.find_element(By.XPATH,"/html/body/div[2]/div/div[1]/div[1]/div[2]/div/main/div[1]/div[1]/div/div[2]/section[4]/div/div[2]/div/div/button").click()      
+            browser.find_element(By.XPATH,"/html/body/div[2]/div[1]/div[1]/div[1]/div[2]/div/main/div[1]/div[1]/div/div[2]/section[4]/div/div[2]/div/div/div/button/div").click()      
             time.sleep(7)
             # increment date
             utilfns.delete_files_in_directory(temp_folder)
